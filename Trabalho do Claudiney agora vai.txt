@@ -127,7 +127,7 @@ int main() {
     printf("Digite uma temperatura em Celsius para vê-la em Kelvin: ");
     scanf("%f", &c);
     kelvin = c + 273.15;
-    printf("%.1f°C em Celsius é %.1fK", c, kelvin);
+    printf("%.1f°C em Kelvin é %.1fK", c, kelvin);
 
     return 0;
 }
@@ -145,7 +145,7 @@ int main ()
   printf ("Digite uma velocidade em km/h para ver em m/s: ");
   scanf ("%f", &km);
   ms = km / 3.6;
-  printf ("%.1fkm/h C) %2.fm/s", km, ms);
+  printf ("%.1fkm/h é equivalente a %2.fm/s", km, ms);
 
   return 0;
 }
@@ -162,7 +162,7 @@ int main ()
   printf ("Digite uma velocidade em m/s para ver em km/h: ");
   scanf ("%f", &ms);
   km = ms *3.6;
-  printf ("%.1fkm/h é %2.fm/s", km, ms);
+  printf ("%.1fm/s é %2.fkm/h", ms, km);
 
   return 0;
 }
@@ -175,9 +175,9 @@ conversão é: K = 1.61*M, sendo K a distância em quilômetros e M em milhas.*/
 int main ()
 {
   float km, milhas;
-  printf("Digite uma distância em milhas para vê-la em km: ")
+  printf("Digite uma distância em milhas para vê-la em km: ");
   scanf("%f", &milhas);
-  km = 1.61 * milhas
+  km = 1.61 * milhas;
   printf("A conversão de %.1f milhas em quilômetros é: %.1fkm", milhas, km);
   return 0;
 }
@@ -668,7 +668,7 @@ int main(){
     printf("O valor a ser pago para o funcionário é: %d", total);
     return 0;
 }
-//============================================================================================
+
 //============================================================================================
 /*
 43. Escreva um programa de ajuda para vendedores. A partir de um valor total lido, mostre:
@@ -773,11 +773,6 @@ int main()
     
     return 0;
 }
-
-
-
-
-
 /*
 //=================================================================================================
 /*
@@ -909,9 +904,8 @@ int main()
     scanf("%f", &p);
     
     
-    printf("O custo do terreno é: %.2f ", C*L*p );
+    printf("O custo do terreno é: %.2f ", ((2*C)+(2*L))*p );
     
     return 0;
 }
 //=======================================================================================================================
-
