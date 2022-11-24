@@ -1,0 +1,1107 @@
+//1. Crie uma função que recebe como parâmetro um número inteiro e devolve o seu dobro
+
+#include <stdio.h>
+
+int 
+dobro(int num)
+{
+    return 2 * num;
+}
+
+
+int main()
+{
+    int numero;
+    printf("Digite um valor para ver seu dobro: ");
+    scanf("%d", &numero);
+    printf("O dobro dele eh: %d\n", dobro(numero));
+}
+========================================================================================
+// 2. Faça uma função que receba a data atual (dia, mês e ano em inteiro) e exiba-a na tela no
+// formato textual por extenso. Ex.: Data: 18/11/2022, Imprimir: 18 de novembro de 2022.
+
+#include <stdio.h>
+
+int 
+data(int dia, int mes, int ano)
+{
+    switch (mes)
+    {
+    case 1:
+        printf("%d de Janeiro de %d\n", dia, ano);
+        break;
+    case 2:
+        printf("%d de Fevereiro de %d\n", dia, ano);
+        break;
+
+    case 3:
+        printf("%d de Marco de %d\n", dia, ano);
+        break;
+
+    case 4:
+        printf("%d de Abril de %d\n", dia, ano);
+        break;
+
+    case 5:
+        printf("%d de Maio de %d\n", dia, ano);
+        break;
+
+
+    case 6:
+        printf("%d de Junho de %d\n", dia, ano);
+        break;
+
+    case 7:
+        printf("%d de Julho de %d\n", dia, ano);
+        break;
+
+    case 8:
+        printf("%d de Agosto de %d\n", dia, ano);
+        break;
+
+    case 9:
+        printf("%d de Setembro de %d\n", dia, ano);
+        break;
+
+    case 10:
+        printf("%d de Outubro de %d\n", dia, ano);
+        break;
+
+    case 11:
+        printf("%d de Novembro de %d\n", dia, ano);
+        break;
+    
+    case 12:
+        printf("%d de Dezembro de %d\n", dia, ano);
+        break;
+
+    default:
+        printf("Desculpe, eu não entendi")
+        break;
+    }
+}
+int main()
+{
+    int dia, mes, ano;
+    char barra;
+    printf("Digite uma data para ve-la por extenso: \n");
+    scanf("%d %c %d %c %d", &dia, &barra, &mes, &barra, &ano);
+    data(dia, mes, ano);
+}
+=========================================================================================
+// 3. Faça uma função para verificar se um número é positivo ou negativo. Sendo que o valor de
+// retorno será 1 se positivo, -1 se negativo e 0 se for igual a 0.
+
+#include <stdio.h>
+
+//testar se o número é positivo ou negativo em uma função
+int 
+negative_tester(x)
+{
+    if (x > 0)
+        return 1;
+    else if (x < 0)
+        return -1;
+    else
+        return 0;
+}
+
+int main()
+{
+    int num, teste;
+    //pegar o numero do usuário
+    printf("Digite um número para saber se ele é negativo, positivo ou igual a 0: \n");
+    scanf("%d", &num);
+    //chamar a função para verificar e printar o resultado da análise
+    teste = negative_tester(num);
+
+    if (teste == 1)
+        printf("O número é positivo!\n");
+    if (teste == -1)
+        printf("O número é negativo!\n");
+    if (teste == 0)
+        printf("O número é igual a 0\n");
+}
+=============================================================
+4. Faça uma função para verificar se um número é um quadrado perfeito. Um quadrado 
+perfeito é um número inteiro não negativo que pode ser expresso como o quadrado de 
+outro número inteiro. Ex.: 1, 4, 9...
+
+#include <stdio.h>
+#include <math.h>
+
+
+void 
+square_tester(int number)
+{
+    int root;
+    root = sqrt(number);
+    if (root * root == number)
+        printf("It is a perfect square number.");
+    else
+        printf("It isn't a perfect square.");
+}
+void 
+main()
+{
+    int num;
+
+    printf("Enter a number to know if its a perfect square: ");
+    scanf("%d", &num);
+
+    square_tester(num);
+}
+===================================================
+5. Faça uma função e um programa de teste para o cálculo do volume de uma esfera. Sendo 
+que o raio é passado por parâmetro.
+
+#include <stdio.h>
+
+int 
+sphere_volume(float radius)
+{
+    //Variables
+    float volume,
+          pi = 3.141592;
+    //Calculating the volume
+    volume = (4 * pi * (radius * radius * radius))/3;
+    return volume;
+}
+
+
+void
+main()
+{
+    //Variables
+    int radius;
+
+    //get the radius of the sphere
+    printf("Enter the radius of the sphere: ");
+    scanf("%d", &radius);
+    
+    //printing and calling the function of volume
+    printf("The volume of the sphere is %d", sphere_volume(radius));
+}
+====================================================
+// 6. Faça uma função que receba 3 números inteiros como parâmetro, representando horas,
+// minutos e segundos, e os converta em segundos.
+
+#include <stdio.h>
+#include <math.h>
+
+int
+second_conversion(int hour, int minute, int second)
+{
+    int sum = 0;
+    //sum the hour 
+    sum = hour * 3600;
+    sum = sum + (minute * 60);
+    sum = sum + second;
+    
+    return sum;
+}
+
+
+int main()
+{
+    int hour,   //Primeiro parâmetro
+        minute,   //Segundo parâmetro
+        second;   //terceiro parâmetro
+        
+    printf("Write the hours: ");
+    scanf("%d", &hour);
+    
+    printf("\nWrite the minutes: ");
+    scanf("%d", &minute);
+        
+    printf("\nWrite the second: ");
+    scanf("%d", &second); 
+    
+    printf("The conversion of these hours, minutes and seconds in seconds is %d", second_conversion(hour, minute, second));
+    
+    return 0;
+}
+========================================================
+//7. Faça uma função que receba uma temperatura em graus Celsius e retorne-a convertida em 
+//graus Fahrenheit. A fórmula de conversão é: 𝐹 = 𝐶 ∗ (9,05,0) + 32,0, sendo F a temperatura 
+//em Fahrenheit e C a temperatura em Celsius.
+
+#include <stdio.h>
+
+int
+temperature_converter(float celsius)
+{
+    //Variable to calculate
+    int fahrenheit;
+    
+    //Converting celsius to fahrenheit and returning
+    fahrenheit = celsius * (9.0/5.0) + 32;
+    return fahrenheit;
+}
+
+void
+main()
+{
+    //Variables
+    int temperature,    //The temperature that the user will enter
+        fahrenheit;     //The temperature to print on the screen
+    
+    //Getting the temperature to convert
+    printf("Enter a temperature in Celsius to convert in Fahrenheit: ");
+    scanf("%d", &temperature);
+
+    //A variable saving the conversion 
+    fahrenheit = temperature_converter(temperature);
+
+    //printing the result
+    printf("The temperature in farenheit is %d", fahrenheit);
+}
+=====================================================
+//8. Sejam a e b os catetos de um triangulo, onde a hipotenusa é obtida pela equação: 
+//hipotenusa = √𝑎
+//2 + 𝑏
+//2. Faça uma função que receba os valores de a e b e calcule o valor 
+//da hipotenusa através da equação
+
+#include <stdio.h>
+#include <math.h>
+
+int
+hypotenuse(int a, int b)
+{
+    //Variable
+    int result;
+
+    //Calculating
+    result = sqrt(a*a + b*b);
+    //Returning the result found
+    return result;
+}
+
+
+void
+main()
+{
+    int a,
+        b;
+    
+    printf("Enter the value of 'a'");
+    scanf("%d", &a);
+
+    printf("Enter the value of 'b'");
+    scanf("%d", &b);
+
+    printf("The hipotenuse is: %d", hypotenuse(a, b));
+}
+======================================================
+//9. Faça uma função que receba a altura e o raio de um cilindro circular e retorne o volume do 
+//cilindro. O volume de um cilindro circular é calculado por meio da seguinte fórmula: 𝑉 =
+// ∗ 𝑟𝑎𝑖𝑜2
+//∗ 𝑎𝑙𝑡𝑢𝑟𝑎, onde  = 3.141592.
+
+#include <stdio.h>
+
+float
+cilinder_volume(float height, float radius)
+{
+    //variables
+    float 
+        volume,
+        pi = 3.141592;
+
+    //calculation volume
+    volume = pi * (radius * radius) * height;
+
+    //returning volume
+    return volume;
+}
+
+void
+main()
+{
+    //variables
+    float 
+        height,
+        radius;
+
+    //Getting the heigher and the radius of the cilinder
+    printf("Enter the height of the cilinder: ");
+    scanf("%f", &height);
+
+    printf("Enter the radius of the cilinder: ");
+    scanf("%f", &radius);
+
+    printf("the volume of the cilinder is: %f", cilinder_volume(height, radius));
+}
+
+========================================================
+//10. Faça uma função que receba dois números e retorne qual deles é o maior.
+
+#include <stdio.h>
+
+int 
+bigger(int num1, int num2)
+{
+    if (num1 > num2)
+        return 1;
+        
+    else if (num1 < num2)
+        return 2;
+    
+    else if (num1 == num2)
+        return 3;
+}
+
+
+int 
+main()
+{
+    //Variables
+    int analyse, num1, num2;
+    //Get the 2 numbers
+    printf("Enter the first value to analyse: ");
+    scanf("%d", &num1);
+    
+    printf("Enter the second value to analyse: ");
+    scanf("%d", &num2);
+    
+    //Call the function
+    analyse = bigger(num1, num2);
+    
+    //Analyse the result get on the function
+    switch(analyse)
+    {
+        case 1:
+        printf("%d > %d", num1, num2);
+        break;
+        
+        case 2:
+        printf("%d > %d", num2, num1);
+        break;
+        
+        case 3:
+        printf("%d = %d", num1, num2);
+        break;
+    }
+
+    return 0;
+}
+====================================================
+//11. Elabore uma função que receba três notas de um aluno como parâmetros e uma letra. Se a 
+//letra for A, a função deverá calcular a média aritmética das notas do aluno; se for P, deverá 
+//calcular a média ponderada, com pesos 5, 3 e 2.
+
+#include <stdio.h>
+
+//Calling the function
+int
+average(int score1, int score2, int score3, char type)
+{
+    //Variables 
+    int 
+        w1 = 1,     //Weight 1
+        w2 = 1,     //Weight 2
+        w3 = 1,     //Weight 3
+        divisor = 3, // The number that will divide
+        result = 0; //The result of the average
+
+    /*
+    If the user choose Wheighted average, so the program change the Weights for another ones
+    following the weights said in the exercise
+    */
+    if (type == 'W')
+    {
+        w1 = 5;
+        w2 = 3;
+        w3 = 2;
+        divisor = 10;
+    }
+
+    //Doing the average based in the values of the weights and divisor
+    result = ((score1 * w1) + (score2 * w2) + (score3 * w3)) / divisor;
+
+    //return the final result to the function
+    return result;
+}
+
+
+void
+main()
+{
+    //variables
+    int
+        score1,
+        score2,
+        score3;
+    char
+        type;
+    
+    //A loop to get the score of the student and it has to be bigger or equal to 0
+    do
+    {
+        //getting the scores
+        printf("Enter the first pontuation of the student: ");
+        scanf("%d", &score1);
+
+        printf("Enter the second pontuation of the student: ");
+        scanf("%d", &score2);
+
+        printf("Enter the second pontuation of the student: ");
+        scanf("%d", &score3);
+    //getting the condition of being bigger or equal to 0
+    } while(score1 <= 0 || score2 <= 0 || score3 <= 0);
+
+
+    //Another loop to get a character that is A or W
+    do
+    {
+        //Cleaning the scanf to receive something without 'Space'
+        fflush(stdin);
+
+        //Getting the type of the average
+        printf("What kind of average do you want to do? (A)arithmetic or (W) Weighted\n");
+        scanf("%c", &type);
+        //Treating the data to be just upper letters
+        if (type == 'w' || type == 'a')
+            type = type - 32;
+        
+        //getting the condition to be or A or W
+    } while(type != 'A' && type != 'W');
+    
+    //Printing on the screen the average based on the user commands
+    printf("The average is %d", average(score1, score2, score3, type));
+}
+======================================================
+//12. Escreva uma função que receba um número inteiro maior do que zero e retorne a soma de 
+//todos os seus algarismos. Por exemplo, ao número 251 corresponderá o valor 8 (2 + 5 + 1). 
+//Se o número lido não for maior do que zero, o programa terminará com a mensagem 
+//“Número inválido”.
+
+#include <stdio.h>
+
+int 
+digit_sum(int num)
+{
+    //variable
+    int 
+        sum = 0;
+    //Getting a loop to sum each digit of the number
+    while (num > 0)
+    {
+        //Each roll sum the digit from the end to the beggining
+        sum = sum + (num % 10);
+        //Put out the last digit of num
+        num = num / 10;
+    }
+    //returning the last result
+    return sum;
+}
+
+
+void
+main()
+{
+    //Variables
+    int 
+        num,    //The number that the user will enter
+        result; //The result to be easier to print
+
+    //Getting the users number 
+    printf("Enter a number to know the sum of its digits: ");
+    scanf("%d", &num);
+    
+    //Calling the function
+    result = digit_sum(num);
+    // printing the result
+    printf("The sum is %d", result);
+}
+=====================================================
+//13. Faça uma função que receba dois valores numéricos e um símbolo. Este símbolo
+//representará a operação que se deseja efetuar com os números. Se o símbolo for ‘+’ deverá 
+//ser realizada uma adição, se for ‘–‘ uma subtração, se for ‘*’ uma multiplicação e se for ‘/’ 
+//será efetuada uma divisão.
+
+#include <stdio.h>
+
+float
+operation(float num1, float num2, char symbol)
+{
+    //Variable
+    float 
+        result = 0;
+
+    //For each case of the math operators
+    result = (symbol == '+') ? num1 + num2 : result;
+
+    result = (symbol == '-') ? num1 - num2 : result;
+
+    result = (symbol == '*') ? num1 * num2 : result;
+
+    result = (symbol == '/') ? num1 / num2 : result;
+
+    //return the value
+    return result;
+}
+
+void
+main()
+{
+    //variables
+    float
+        num1,   //first number
+        num2;   //second number
+
+    char
+        symbol; //to know what math operator will be used
+
+    //Get the first number
+    printf("Enter the first number: ");
+    scanf("%f", &num1);
+
+    //Cleaning the user scan because char is a fool and sensitive thing
+    fflush(stdin);
+
+    //getting the math operator 
+    printf("Enter the math symbol you want to use:(+,-,*,/): ");
+    scanf(" %c", &symbol);
+
+    //getting the second operator
+    printf("Enter the second number: ");
+    scanf("%f", &num2);
+
+    //Calling the function and printing its result
+    printf("The result is: %.1f", operation(num1, num2, symbol));
+}
+=====================================================
+//14. Faça uma função que receba a distância em Km e a quantidade de litros de gasolina 
+//consumidos por um carro em um percurso, calcule o consumo em Km/l e escreva uma 
+//mensagem de acordo com a tabela abaixo:
+//CONSUMO (Km/l) MENSAGEM
+//menor que 8 Venda o carro!
+//entre 8 e 14 Econômico!
+//maior que 14 Super econômico
+
+#include <stdio.h>
+
+void
+car_message(int km, int liter)
+{
+    //variables
+    int consume;
+    consume = km / liter;
+
+    //For every situation you do something
+    if (consume > 14)
+        printf("Super Economic");
+    
+    else if (consume >= 8)
+        printf("Economic");
+    
+    else if (consume > 0)
+        printf("Sell your vehicle");
+}
+
+
+void
+main()
+{
+    //variables
+    int 
+        km,
+        liter;
+
+    //Getting the kilometers and the gas
+    printf("Please, enter the kilometers: ");
+    scanf("%d", &km);
+
+    printf("Please, enter the gas liters: ");
+    scanf("%d", &liter);
+
+    //Calling the function
+    car_message(km, liter);
+}
+
+=====================================================
+// 15. Crie um programa que receba três valores (obrigatoriamente maiores que zero), 
+// representando as medidas dos três lados de um triângulo. Elabore funções para:
+// a) Determinar se eles lados formam um triângulo, sabendo que:
+//  O comprimento de cada lado de um triângulo é menor do que a soma dos outros
+// dois lados.
+// b) Determinar e mostrar o tipo de triângulo, caso as medidas formem um triângulo. Sendo 
+// que:
+//  Chama-se equilátero o triângulo que tem três lados iguais;
+//  Denominam-se isósceles o triângulo que tem o comprimento de dois lados iguais;
+//  Recebe o nome de escaleno o triângulo que tem os três lados diferentes.
+
+#include <stdio.h>
+
+int 
+triangle_exist(int a, int b, int c)
+{
+    if ((a < b + c) && (b < a + c) && (c < a + b))
+        return 1;
+
+    else
+        return 0;
+}
+
+int 
+triangle_type(int a, int b, int c)
+{
+    if (a == b && a == c && b == c)
+        printf("The triangle is equilateral");
+
+    else if (a != b && a != c && b != c)
+        printf("The triangle is scalene");
+    
+    else
+        printf("The triangle is isosceles");
+}
+
+
+int 
+main()
+{
+    //Variables 
+    int side1, side2, side3, result;
+    
+    //Get the sides of the triangle
+    printf("Enter the first side of the triangle: ");
+    scanf("%d", &side1);
+    
+    printf("Enter the second side of the triangle: ");
+    scanf("%d", &side2);
+    
+    printf("Enter the third side of the triangle: ");
+    scanf("%d", &side3);
+    
+    //Call the function to know if the triangle exist
+    result = triangle_exist(side1, side2, side3);
+
+    //Analyse the result and give a feedback of its existence
+    //If the triangle could exist tell to the user what type it is
+    if (result == 1)
+        printf("The triangle exist\n");
+        triangle_type(side1, side2, side3);
+
+    else if (result == 0)
+        printf("The triangle couldn't exist\n");
+        
+    return 0;
+}
+====================================================
+//16. Faça uma função chamada desenha_linha. Ele deve desenhar uma linha na tela usando uma
+//sequência de símbolos de igual (Ex.: ========). A função recebe por parâmetro quantos 
+//sinais de igual serão mostrados.
+
+#include <stdio.h>
+
+void
+draw_line(int num)
+{
+    //Variables
+    int 
+        count;
+    
+    //A loop to print 'num' times the '=' symbol
+    for (count = 1; count <= num; count++)
+        printf("=");
+}
+
+void
+main()
+{
+    int
+        num; //The times that '=' will be printed
+    
+    //getting the user desire
+    printf("How many '=' you want to see? ");
+    scanf("%d", &num);
+
+    //Calling the function
+    draw_line(num);
+}
+
+
+====================================================
+//17. Faça uma função que receba dois números inteiros positivos por parâmetro e retorne a 
+//soma dos N números inteiros existentes entre eles.
+
+#include <stdio.h>
+
+
+int 
+between_sum(num1, num2)
+{
+    //Variables
+    int 
+        count,
+        sum = 0;
+
+    //A loop starting in (num1 + 1) until (num2 - 1)
+    // and sum every number in the middle 
+    for (count = (num1 + 1); count < num2; count++)
+        sum = sum + count;
+    
+    //return the sum
+    return sum;
+}
+
+void
+main()
+{
+    //variables
+    int
+        num1, //first number get
+        num2; //second number get
+
+    //A loop to avoid problems in the function 
+    do
+    {
+        //getting the numbers 
+        printf("Enter the first number: ");
+        scanf("%d", &num1);
+
+        printf("Enter the second number: ");
+        scanf("%d", &num2);
+
+    } while(num1 > num2);
+    
+    //print the result
+    printf("The sum of the numbers in the middle of theese 2 is: %d", between_sum(num1, num2));
+}
+======================================================
+//18. Faça uma função que receba por parâmetro dois valores inteiros x e z. Calcule e retorne o 
+//resultado de x
+//z para o programa principal. Atenção não utilize nenhuma função pronta de 
+//exponenciação.
+
+#include <stdio.h>
+
+int
+exponentiation(num, exp)
+{
+    //Variables
+    int 
+        count, //The counter for loop
+        changeless;  // A number that doesn't change to simulate the exponentiation
+
+    changeless = num;    
+    
+    //A loop to multiply 'exp' times the 'num' value
+    for(count = 1; count <= exp; count++)
+        num = num * changeless;
+    
+    //return the num value 
+    return num;
+}
+
+
+void
+main()
+{
+    //Variables
+    int
+        num, //number in the base
+        exp; //number of exponentiation
+
+    
+    //Get the number in the base and its exponentiation
+    printf("Enter the number in the base: \n");
+    scanf("%d", &num);
+
+    printf("Enter the number in the exponentiation: \n");
+    scanf("%d", &exp);
+    
+    //Call the function and print the result
+    printf("The final value is: %d", exponentiation(num, exp));
+}
+=========================================================
+//19. Faça uma função que receba um número inteiro positivo n e calcule o seu fatorial, n!.
+
+#include <stdio.h>
+
+int
+fatorial(num)
+{
+    //Variables
+    int
+        count,
+        result = 1;
+
+    //A loop to do the fatorial calculus
+    for (count = 1; count <= num; count++)
+        result = result * count;
+    
+    //Call the result
+    return result;
+}
+
+
+void 
+main()
+{
+    //variables
+    int
+        num; //The number to know the fatorial
+
+    //Get the number to do the fatorial
+    printf("Enter the number to know the fatorial: ");
+    scanf("%d", &num);
+
+    //Call the function and print the result
+    printf("The result of fatorial is: %d", fatorial(num));
+}
+=========================================================
+//20. Escreva uma função para determinar a quantidade de números primos abaixo de N.
+
+#include <stdio.h>
+
+
+int
+prime_counter(range)
+{
+    //Variables
+    int
+        num,
+        result,
+        count,
+        prime = 0;
+
+    //Loop to analyse all the number from 2 to range
+    for (num = 2; num <= range; num++)
+    {
+        //Give 0 to this variable to be able to analyse later
+        result = 0;
+
+        //Loop to test each number got from the last for
+        for (count = 2; count < num; count++)
+        {
+            //Try to divide for all the primes
+            //If it divide for some number (there aren't the 1 and itself here)
+            //So it isn't a prime 
+            if (num % count == 0)
+            {
+                //a Key to analyse later
+                result++;
+                break;
+            }
+        }
+
+        //If it doesn't have any sum in 'result' so it didn't divided by any number and it is a prime;
+        if (result == 0)
+        {
+            //Add a prime for each one found
+            prime++;
+        }
+
+    }
+    //print the number of primes found
+    printf("The primes %d", prime);
+}
+
+void
+main()
+{
+    //Variables
+    int
+        range;
+
+    //get the range that will be analysed 
+    printf("Enter a number to know the primes beetwen ");
+    scanf("%d", &range);
+
+    //Calling the function
+    prime_counter(range);  
+}
+
+
+=========================================================
+// 21. Crie uma função que receba como parâmetro um valor inteiro e gere como saída n linhas
+// com pontos de exclamação, conforme o exemplo abaixo (para n = 5):
+// !
+// !!
+// !!!
+// !!!!
+// !!!!!
+#include <stdio.h>
+
+int 
+pyramid_maker(int lines)
+{
+    //Function variables
+    int counter,
+        exclamation;
+    //A loop to do sometehing in each line
+    for (counter = 1; counter <= lines; counter++)
+    {
+        //A loop to do something for each exclamation mark
+        //When this loop finish, then the program jump a line
+        for (exclamation = 1; exclamation <= counter; exclamation++)
+        {
+            printf("!");
+        }
+        printf("\n");
+    }
+}
+
+void
+main()
+{
+    int lines;
+
+    printf("Enter the number of lines that will be create by the program: ");
+    scanf("%d", &lines);
+
+    pyramid_maker(lines);
+}
+==========================================================
+//22 - A 22 foi um surto do Claudiney
+========================================================
+// 23. Escreva uma função que gera um triângulo lateral de altura 2*n-1 e n largura. Por exemplo, 
+// a saída para n = 4 seria:
+// *
+// **
+// ***
+// ****
+// ***
+// **
+// *
+
+#include <stdio.h>
+
+
+int 
+triangle_create(int height)
+{
+    //Function variables
+    int counter = 0,
+        symbol,
+        total_line,
+        line = 1;
+    //The total of lines that will be created is the same as (height + (height - 1))
+    total_line = 2 * height - 1;
+    // A loop to do something in each line
+    // This loop will act until the quantity of lines is done
+    while (line <= total_line) 
+    {
+        //Here is a counter to manipulate the next for loop
+        //The triangle formed will grow until it get the same LINE of the numeric HEIGHT
+        //Until it get to the height value, it will grow. If it pass the value, it start to decrease
+        counter = line <= height ? counter + 1: counter - 1;
+        
+        // The loop to print the symbols 
+        for (symbol = 1; symbol <= counter; symbol++)
+        {
+            printf("*");
+        }
+
+        //To pass a space every completed line
+        printf("\n");
+
+        //another counter to broke the while loop
+        line++;
+    }
+}
+
+int 
+main()
+{
+    int height;
+
+    printf("Enter the height of the triangle that'll be create: ");
+    scanf("%d", &height);
+
+    triangle_create(height);
+}
+=====================================================
+//24. Escreva uma função que gera um triângulo de altura e lados n e base 2*n-1. Por exemplo, a 
+//saída para n = 6 seria:
+//          *
+//        ***
+//      *****
+//    *******
+//  *********
+//***********
+
+#include <stdio.h>
+
+void
+triangle(height)
+{
+    //variables
+    int
+        count, // Who will be the counter
+        space = height - 1, //Who will coordenate the spaces that will be print
+        ast = 1, // Who will coordenate the asterixes that will be print
+        printer; //Who will coordenate how many prints will be
+
+        /*The Space variable has that number because
+        the whole base is '2n - 1', if the height is 3 the base is 5 
+        So, for the first line i need the N - 1 os spaces and next the first asterix
+        and in this program I called N by height */
+
+    //A loop to do every line in triangle
+    for (count = 1; count <= height; count++)
+    {
+        //A loop for the spaces 
+        for (printer = 1; printer <= space; printer++)
+            printf(" ");
+
+        //A loop for te asterixes
+        for (printer = 1; printer <= ast; printer++)
+            printf("*");
+
+        //The variation of spaces and asterixes, the spaces is less 1, but the asterix grow in both sides
+        //so it grows 2 symbols
+        space = space - 1;
+        ast = ast + 2;
+
+        //To jump the line when it's done
+        printf("\n");
+    }
+}
+
+
+
+void
+main()
+{
+    //Variable
+    int 
+        height;
+        
+    //Get the height of the triangle
+    printf("Enter the height of the triangle: ");
+    scanf("%d", &height);
+
+    //Calling the function
+    triangle(height);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
