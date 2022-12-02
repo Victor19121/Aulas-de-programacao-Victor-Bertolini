@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void
+main()
+{
+    char
+        texto[100];
+
+
+    fgets(texto, 100, stdin);
+
+
+    for(int contador = 0; contador < 100; contador++)
+    {
+
+
+        if (texto[contador] == 'r' && texto[contador + 1] == 'r')
+        {
+            texto[contador] = 127;
+            texto[contador + 1] = 'l';
+        }
+
+        else if (texto[contador] == 'r' && (texto[contador + 1] == 'r'))
+        {
+            texto[contador] = 'r';
+        }
+
+        else if (texto[contador] == 'R')
+        {
+            texto[contador] = 'L';
+        }
+
+
+        else if (texto[contador] == 'r')
+        {
+            texto[contador] = 'l';
+        }
+
+    }
+
+    printf("%s", texto);
+}
