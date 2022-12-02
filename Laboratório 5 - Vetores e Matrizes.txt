@@ -1,0 +1,624 @@
+//1. Faça um programa que possua um vetor denominado A que armazene 6 números inteiros.
+// O programa deve executar os seguintes passos:
+// a) Atribua os seguintes valores a esse vetor: 1, 0, 5, -2, -5, 7.
+// b) Armazene em uma variável inteira (simples) a soma entre os valores das posições
+// A[0], A[1] e A[5] do vetor e mostre na tela esta soma.
+// c) Modifique o vetor na posição 4, atribuindo a esta posição o valor 100.
+// d) Mostre na tela cada valor do vetor A, um em cada linha.
+
+#include <stdio.h>
+
+void 
+main()
+{  
+    //Variables
+    int 
+        array[6] = {1, 0, 5, -2, -5, 7},    //The array 
+        sum = 0;    //The sum
+
+    //Doing the sum that the program needs
+    sum = array[0] + array[1], array[5];
+    printf("The sum of the elements is: %d\n", sum);
+
+    //Changing the value of a position in array
+    array[4] = 100;
+
+    //printing each value of the array
+    for (int count = 0; count < 6; count++)
+         printf("The vector in position %d is %d\n", count, array[count]);
+}
+================================================================
+// 2. Faça um programa que leia um vetor de 8 posições e, em seguida, leia também dois valores
+// X e Y quaisquer correspondentes a duas posições no vetor. Ao final seu programa deverá
+// escrever a soma dos valores encontrados nas respectivas posições X e Y.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+
+void 
+main()
+{
+    //Variables
+    int 
+        array[8] = {rand(), rand(), rand(), rand(), rand(), rand(), rand()},   //The array
+        pos1 = 0,       //The first position in the array
+        pos2 = 0,       //The second position in the array
+        sum = 0;            //The sum of the numbers in the positions
+    
+    do 
+    {
+        printf("Enter the first position in the array: ");
+        scanf("%d", &pos1);
+
+        printf("Enter the second position in the array: ");
+        scanf("%d", &pos2);
+
+    } while (pos1 < 0 || pos2 < 0 || pos1 > 7 || pos2 > 7);
+
+
+    sum = (array[pos1] % 100) + (array[pos2] % 100);
+    printf("The sum of %d + %d = %d", array[pos1] % 100, array[pos2] % 100, sum);
+}
+===============================================================
+// 3. Crie um programa que lê 6 valores inteiros e, em seguida, mostre na tela os valores lidos na
+// ordem inversa.
+#include <stdio.h>
+
+void 
+main()
+{
+    int
+        array[6];
+
+    for (int count = 0; count < 6; count++)
+    {
+        printf("Enter the %d number: \n", count + 1);
+        scanf("%d", &array[count]);
+    }
+
+    for (int count = 5; count > -1; count--)
+        printf("%d ", array[count]);
+}
+==========================================================
+// 4. Fazer um programa para ler 5 valores e, em seguida, mostrar a posição onde se encontram
+// o maior e o menor valor.
+#include <stdio.h>
+
+void
+main()
+{
+    //Variables
+    int 
+        array[5],       //The array that will be analysed
+        higher = 0,         //A variable to store the higher number
+        lower = 0,
+        position_high = 0,
+        position_low = 0;          //A variable to store the lowest number
+    
+    //A loop to store all the numbers in the array that the user will enter
+    for (int count = 0; count < 5; count++)
+    {
+        printf("Enter the %d number o analyse: ", count + 1);
+        scanf("%d", &array[count]);
+    }
+
+    //A loop to analyse what number in the array is 
+    for (int count = 0; count < 5; count++)
+    {
+        //When its the first time the for loop is going, so higher and lower get the value to 
+        //stop getting the '0' used in the variables declaration
+        if (count == 0)
+            higher = lower = array[0];
+        
+        //analysis of bigger and getting the positon of it
+        if (array[count] >= higher)
+        {
+            higher = array[count];
+            position_high = count;
+        }
+        
+        //analysis of lower and getting position of it
+        if (array[count] < lower)
+        {    
+            lower = array[count];
+        }
+    }
+    //The result
+    printf("The higher number is %d and the lowest is %d", higher, lower);
+}
+=======================================================
+// 5. Faça um vetor de tamanho 50 preenchido com o seguinte valor: (i+5*i)%(i+1), sendo i
+// a posição do elemento no vetor. Em seguida imprima o vetor na tela.
+#include <stdio.h>
+
+void
+main()
+{
+    int
+        array[50];
+
+    for(int num = 0; num < 50; num++)
+    {
+        array[num] = (num + (5 * num)) % (num + 1);
+        printf("%d, ", array[num]);
+    }
+}
+==========================================================
+// 6. Leia 10 números inteiros e armazene em um vetor. Em seguida escreva os elementos que
+// são primos e suas respectivas posições no vetor.
+
+#include <stdio.h>
+
+void 
+main()
+{
+    int 
+        array[10];
+        
+    //Create a array and stock numbers inside it
+    for (int count = 0; count < 10; count++)
+    {
+        printf("Enter the %d number: ", count + 1);
+        scanf("%d", &array[count]);
+    }
+
+    //Something to test every number in the array
+    for (int count = 0; count < 10; count++)
+    {
+        //Every loop reset the result
+        int result = 0;
+
+        //Testing if it is a prime but diferente of 2 and 1 
+        if (array[count] != 2 && array[count] != 1)
+        {
+            //Loop to analyse if the number in the array is a prime or not
+            for (int num = 2; num < array[count]; num++)
+            {
+                //If the number divide by a number that is not 1 or it self
+                if (array[count] % num == 0)
+                    //Putting a key to know if the number divided by another one
+                    result++;
+            }
+            //If the number didn't divided by any number it is a prime
+            if (result == 0)
+            {
+                printf("The number %d is a prime and it is in position %d\n", array[count], count);
+            }
+        }
+        //If the number is 2, it is a prime but is a special case and need special attention
+        else if (array[count] == 2)
+        {
+            printf("The number 2 is a prime and it is in position %d\n", count);
+        }
+    }
+}   
+===============================================================
+// 7. Faça um programa que receba 6 números inteiros e mostre:
+//  Os números pares digitados;
+//  A soma dos números pares digitados;
+//  Os números ímpares digitados;
+//  A quantidade de números ímpares digitados;
+#include <stdio.h>
+
+
+
+void 
+main()
+{
+    int 
+        list[6],
+        sum = 0,
+        odd = 0;
+
+    for (int count = 0; count < 6; count++)
+    {
+        printf("Enter the %d number: ", count + 1);
+        scanf("%d", &list[count]);
+    }
+
+    for (int count = 0; count < 6; count++)
+    {
+        if (list[count] % 2 == 0)
+        {
+            sum = sum + list[count];
+            printf("%d is a pair\n", list[count]);
+        }
+
+        else
+        {
+            printf("%d is a odd\n", list[count]);
+            odd++;
+        } 
+    }
+    printf("In the numbers stocked the sum of the pairs is %d and their is %d odds", sum, odd);
+}
+=====================================================================
+// 8. Faça um programa para ler 10 números DIFERENTES a serem armazenados em um vetor. Os
+// dados deverão ser armazenados no vetor na ordem que forem sendo lidos, sendo que caso
+// o usuário digite um número que já foi digitado anteriormente, o programa deverá pedir para
+// ele digitar outro número. Note que cada valor digitado pelo usuário deve ser pesquisado no
+// vetor, verificando se ele existe entre os números que já foram fornecidos. Exibir na tela o
+// vetor final que foi digitado.
+#include <stdio.h>
+
+void 
+main()
+{
+    //Variables
+    int 
+        list[10] = {},
+        count = 0,
+        result = 0;
+
+    //A loop to analyse each array element
+    for (int countable = 0; countable < 10; countable++)
+    {
+        //A do-while to compile eveytime you try to stock the same number
+        do
+        {
+            printf("Enter the %d number: ", count + 1);
+            scanf("%d", &list[count]);
+
+            result = 0;
+
+            //A loop to test if there are stocking the same number twice
+            for (int internal_counter = 0; internal_counter < count; internal_counter++)
+            {
+                if (list[internal_counter] == list[count])
+                {
+                    result++;
+                }
+            }
+
+        }while(result != 0);
+        count++;
+    }
+    
+    //A loop to print all array elements
+    for (int i = 0; i < 10; i++)
+    {
+        printf("\n[ %d ]", list[i]);
+    }
+}
+==========================================================================
+MATRIZES
+===========================================================================
+// 2. Declare uma matriz 5 × 5. Preencha com 1 a diagonal principal e com 0 os demais elementos.
+// Escreva ao final a matriz obtida.
+#include <stdio.h>
+
+void 
+main()
+{
+     //Variables
+    int 
+        matriz[5][5];
+
+    //Loop to create the matriz values
+    for (int line = 0; line < 5; line++)
+    {
+        for (int column = 0; column < 5; column++)
+        {
+            //Giving values, 1 when line and colum are equal
+            if (column != line)
+                matriz[line][column] = 0;
+
+            else 
+                matriz[line][column] = 1;
+        }
+    }
+
+
+    //Loop to analyse each element in the matriz 
+    for (int line = 0; line < 5; line++)
+    {
+        for (int column = 0; column < 5; column++)
+        {
+            printf("%d", matriz[line][column]);
+        }
+        printf("\n");
+    }
+}
+================================================================
+// 3. Leia uma matriz 4 × 4, imprima a matriz e retorne a localização (linha e a coluna) do maior
+// valor.
+#include <stdio.h>
+
+void 
+main()
+{
+    int
+        matriz[4][4],
+        greater = 0;
+
+
+    //Loop to create the matriz values
+    for (int line = 0; line < 4; line++)
+    {
+        for (int column = 0; column < 4; column++)
+        {
+            printf("Enter a number to [%d][%d] position in the matriz: ", line, column);
+            scanf("%d", &matriz[line][column]);
+        }
+    }
+
+    for (int line = 0; line < 4; line++)
+    {
+        for (int column = 0; column < 4; column++)
+        {
+            if (line == 0 && column == 0)
+                greater = matriz[line][column];
+            
+            if (matriz[line][column] > greater)
+                greater = matriz[line][column];
+        }
+    }
+
+    printf("The greatest number in the matriz is: %d", greater);
+}
+============================================================
+
+// 4. Leia uma matriz 5 × 5. Leia também um valor X. O programa deverá fazer uma busca desse
+// valor na matriz e, ao final, escrever a localização (linha e coluna) ou uma mensagem de “não
+// encontrado”
+#include <stdio.h>
+
+
+void 
+main()
+{
+    //Varibles
+    int
+        matriz[5][5],
+        num,
+        result = 0;
+
+    
+    //Loop to create the matriz values
+    for (int line = 0; line < 5; line++)
+    {
+        for (int column = 0; column < 5; column++)
+        {
+            printf("Enter a number to [%d][%d] position in the matriz: ", line, column);
+            scanf("%d", &matriz[line][column]);
+        }
+    }
+
+    //Beautiful
+    for(int i = 0; i < 100; i++)
+        printf("=");
+
+    //get the number you want to find
+    printf("\nEnter a number that you want to find: ");
+    scanf("%d", &num);
+
+    //Looking for all the matriz searching for the number
+    for (int line = 0; line < 5; line++)
+    {
+        for (int column = 0; column < 5; column++)
+        {
+            if (matriz[line][column] == num)
+            {
+                printf("The position of %d is line %d and column %d", num, line, column);
+                result++;
+            }
+        }
+    }
+    //Printing the False result
+    if (result == 0)
+        printf("The value serching wasn't found...");
+}
+===================================================================
+5
+
+
+=====================================================================
+// 6. Gere matriz 4 × 4 com valores no intervalo [1, 20]. Escreva um programa que transforme a
+// matriz gerada numa matriz triangular inferior, ou seja, atribuindo zero a todos os elementos
+// acima da diagonal principal. Imprima a matriz original e a matriz transformada.
+
+#include <stdio.h>
+
+
+void 
+main()
+{
+    //Variables
+    int 
+        matriz[4][4];
+    
+    
+    
+    //Loop to create the matriz values
+    for (int line = 0; line < 4; line++)
+    {
+        for (int column = 0; column < 4; column++)
+        {
+            //loop to limit to 1 to 20 
+            do
+            {
+                printf("Enter a number to [%d][%d] position in the matriz: ", line, column);
+                scanf("%d", &matriz[line][column]);
+            } while (matriz[line][column] < 0 && matriz[line][column] > 21);
+        }
+    }
+    //printing the original label
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            printf("[%d] ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\n");
+
+
+    //Triangular matriz
+    for (int line = 0; line < 4; line++)
+    {
+        for (int column = 0; column < 4; column++)
+        {
+            //When the matriz get to the leading diagonal so it start to be all 0
+            if (column > line)
+            {
+                matriz[line][column] = 0;
+            }
+        }   
+    }
+
+    //printing the new matriz
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            printf("[%d] ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+==================================================================
+7
+
+
+
+=================================================================
+// 8. Faça um programa que leia duas matrizes 2 × 2 com valores reais. Ofereça ao usuário um
+// menu de opções:
+// a) somar as duas matrizes
+// b) subtrair a primeira matriz da segunda
+// c) adicionar uma constante às duas matrizes
+// d) imprimir as matrizes
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void 
+main()
+{
+    int 
+        matriz[2][2],
+        matriz_2[2][2],
+        matriz_result[2][2],
+        lines = 0,
+        columns = 0,
+        num = 0;
+    char 
+        index;
+
+    printf("\nFirst Matriz: \n");
+
+    for (int line = 0; line < 2; line++)
+    {
+        for (int column = 0; column < 2; column++)
+        {
+            printf("Enter the number [%d][%d]: ", line, column);
+            scanf("%d", &matriz[line][column]);
+        }
+    }
+    printf("\nSecond Matriz: \n");
+
+    for (int line = 0; line < 2; line++)
+    {
+        for (int column = 0; column < 2; column++)
+        {
+            printf("Enter the number [%d][%d]: ", line, column);
+            scanf("%d", &matriz_2[line][column]);
+        }
+    }
+    
+    do
+    {
+        printf("Please, select the option you want to use:\n(a) Sum two matriz\n(b) Subtract the second matriz by the first\n(c) Add a constant to both matriz\n(d) Print both matriz\n");
+
+        scanf(" %c", &index);
+
+        if (index == 'a' || index == 'b' || index == 'c' || index == 'd')
+            index = index - 32;
+    } while ((index != 'A') && (index != 'B') && (index != 'C') && (index != 'D'));
+
+
+
+    switch (index)
+    {
+        case 'A':
+            for (int line = 0; line < 2; line++)
+            {
+                for (int column = 0; column < 2; column++)
+                {
+                    matriz_result[line][column] = matriz[line][column] + matriz_2[line][column];
+                }
+            }
+
+            for (int line = 0; line < 2; line++)
+            {
+                for (int column = 0; column < 2; column++)
+                {
+                    printf("[ %d ] ",matriz_result[line][column]);
+                }
+                printf("\n");
+            }
+
+            break;
+        
+        case 'B':
+            for (int line = 0; line < 2; line++)
+            {
+                for (int column = 0; column < 2; column++)
+                {
+                    matriz_result[line][column] = matriz[line][column] - matriz_2[line][column];
+                }
+            }
+
+            for (int line = 0; line < 2; line++)
+            {
+                for (int column = 0; column < 2; column++)
+                {
+                    printf("[ %d ] ",matriz_result[line][column]);
+                }
+                printf("\n");
+            }
+
+            break;
+
+        case 'C':
+            printf("Enter the line that you want to change: ");
+            scanf("%d", &lines);
+            
+            printf("Enter the column that you want to change: ");
+            scanf("%d", &columns);
+
+            printf("Enter the number you want to stock: ");
+            scanf("%d", &num);
+
+            matriz[lines][columns] = num;
+            
+            matriz_2[lines][columns] = num;
+
+            printf("\n");
+
+        case 'D':
+            for (int line = 0; line < 2; line++)
+            {
+                for (int column = 0; column < 2; column++)
+                {
+                    printf("[ %d ] ",matriz[line][column]);
+                }
+                printf("\n");
+            }
+
+            for (int line = 0; line < 2; line++)
+            {
+                for (int column = 0; column < 2; column++)
+                {
+                    printf("[ %d ] ",matriz_2[line][column]);
+                }
+                printf("\n");
+            }
+            break;
+    }
+}
+============================================================
