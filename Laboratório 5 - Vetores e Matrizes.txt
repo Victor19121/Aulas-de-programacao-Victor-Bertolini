@@ -285,6 +285,41 @@ main()
 ==========================================================================
 MATRIZES
 ===========================================================================
+// 1. Leia uma matriz 4 × 4, conte e escreva quantos valores maiores que 10 ela possui.
+#include <stdio.h>
+
+void 
+main()
+{
+    //Variables
+    int 
+        matriz[4][4],
+        quantity = 0;
+
+    //Loop to create the matriz values
+    for (int line = 0; line < 4; line++)
+    {
+        for (int column = 0; column < 4; column++)
+        {
+            printf("Enter a number to [%d][%d] position in the matriz: ", line, column);
+            scanf("%d", &matriz[line][column]);
+        }
+    }
+
+    //Loop to analyse each element in the matriz 
+    for (int line = 0; line < 4; line++)
+    {
+        for (int column = 0; column < 4; column++)
+        {
+            if (matriz[line][column] > 10)
+                quantity++;
+        }
+    }
+
+    //Conclusion
+    printf("There are %d numbers greaters than 10", quantity);
+}
+=================================================================================================
 // 2. Declare uma matriz 5 × 5. Preencha com 1 a diagonal principal e com 0 os demais elementos.
 // Escreva ao final a matriz obtida.
 #include <stdio.h>
@@ -359,7 +394,6 @@ main()
     printf("The greatest number in the matriz is: %d", greater);
 }
 ============================================================
-
 // 4. Leia uma matriz 5 × 5. Leia também um valor X. O programa deverá fazer uma busca desse
 // valor na matriz e, ao final, escrever a localização (linha e coluna) ou uma mensagem de “não
 // encontrado”
