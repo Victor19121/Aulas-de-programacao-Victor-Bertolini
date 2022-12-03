@@ -550,10 +550,67 @@ main()
     }
 }
 ==================================================================
-7
+// 7. Faça um programa para gerar automaticamente números entre 0 e 99 de uma cartela de
+// bingo. Sabendo que cada cartela deverá conter 5 linhas de 5 números, gere estes dados de
+// modo a não ter números repetidos dentro das cartelas. O programa deve exibir na tela a
+// cartela gerada.
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
+void
+main()
+{
+    int 
+        matriz[5][5] = {},
+        array[25],
+        result = 0,
+        count = 0,
+        counter = 0;
+    srand(time(NULL));
+    for (int countable = 0; countable < 25; countable++)
+    {
+        
+        do
+        {
+            array[countable] = (rand() % 100);
 
+            result = 0;
+
+            //A loop to test if there are stocking the same number twice
+            for (int internal_counter = 0; internal_counter < count; internal_counter++)
+            {
+                if (array[internal_counter] == array[count])
+                {
+                    result++;
+                }
+            }
+
+        }while(result != 0);
+        count++;
+    }
+    
+    for (int line = 0; line < 5; line++)
+    {
+        //Create the matriz column
+        for (int column = 0; column < 5; column++)
+        {
+            matriz[line][column] = array[counter];
+            counter++;
+        }
+    }
+
+    for (int line = 0; line < 5; line++)
+    {
+        //Create the matriz column
+        for (int column = 0; column < 5; column++)
+        {
+            printf("[ %d ] ",matriz[line][column]);
+        }
+        printf("\n");
+    }
+}
 =================================================================
 // 8. Faça um programa que leia duas matrizes 2 × 2 com valores reais. Ofereça ao usuário um
 // menu de opções:
