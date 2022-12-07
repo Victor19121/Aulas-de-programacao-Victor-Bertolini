@@ -1,0 +1,342 @@
+//1. Faça um programa que leia uma string e a imprima.
+#include <stdio.h>
+#include <string.h>
+
+void
+main()
+{
+    char
+        phrase[100];
+
+    fgets(phrase, 100, stdin);
+
+    printf("%s", phrase);
+}
+========================================================
+// 2. Faça um programa que conte o número de 1’s que aparecem em uma string. Exemplo:
+// “0011001” -> 3
+
+#include <stdio.h>
+
+void
+main()
+{
+    //Variables
+    char 
+        text[100];  //string
+    int 
+        num = 0;    //number to count the ones
+
+    //get the string to analyse
+    printf("Enter the text to count how many ones there are: ");
+    fgets(text, 100, stdin);
+    //a loop to analyse each character searching for 1
+    for (int count = 0; count < strlen(text); count++)
+    {
+        if(text[count] == '1')
+            num++;
+    }
+    //results
+    printf("In string %s there is %d ones", text, num); 
+}
+====================================================
+// 3. Faça um programa que receba uma palavra e a imprima de trás-para-frente
+#include <stdio.h>
+#include <string.h>
+
+void
+main()
+{
+    //Variables
+    char 
+        word[100];
+    
+    //get the word to flip
+    printf("Enter the word to flip: ");
+    fgets(word, 100, stdin);
+
+    //A loop to start printing from the last character to the first
+    for (int count = strlen(word); count > -1; count--)
+        printf("%c", word[count]);
+}
+====================================================
+// 4. Faça um programa que receba uma palavra e calcule quantas vogais (a, e, i, o, u) possui essa
+// palavra. Entre com um caractere (vogal ou consoante) e substitua todas as vogais da palavra
+// dada por esse caractere.
+#include <stdio.h>
+#include <string.h>
+
+void
+main()
+{
+    char 
+        word[100],
+        element;
+    
+    int
+        num = 0;
+    
+    //Get the word to analyse
+    printf("Enter a word to count how many vowels there are: ");
+    fgets(word, 100, stdin);
+
+    //Get the character to do the change
+    printf("Enter the character that will change all the vowels: ");
+    scanf("%c", &element);
+
+    //Do a for to analyse all the characters and search for vowels, upper or down
+    for (int count = 0; count < strlen(word); count++)
+    {
+        if(word[count] == 'A' || word[count] == 'E' || word[count] == 'I' || word[count] == 'O' || word[count] == 'U' || word[count] == 'a' || word[count] == 'e' || word[count] == 'i' || word[count] == 'o' || word[count] == 'u')
+        {
+            word[count] = element;
+            num++;
+        }
+    }
+
+    //Conclude
+    printf("There are %d vowels and the resultant string is: %s", num, word);
+}
+======================================================
+// 5. Escreva um programa para converter uma cadeia de caracteres de letras maiúsculas em letras
+// minúsculas. Dica: some 32 dos caracteres cujo código ASCII está entre 65 e 90.
+#include <stdio.h>
+#include <string.h>
+void
+main()
+{
+    char
+        text[100]; //string variable
+
+    //Get the string 
+    printf("Enter the phrase to convert all the upper letters: ");
+    fgets(text, 100, stdin);
+
+    //A loop to analyse each character and change the upper letters
+    for (int count = 0; count < strlen(text); count++)
+    {
+        if (text[count] >= 65 && text[count] <= 90)
+        {
+            text[count] = text[count] + 32;
+        }
+    }
+
+    //conclusion
+    printf("%s", text);
+}
+=========================================================
+// 6. Leia uma cadeia de caracteres e converta todos os caracteres para maiúscula. Dica: subtraia
+// 32 dos caracteres cujo código ASCII está entre 97 e 122.
+#include <stdio.h>
+#include <string.h>
+void
+main()
+{
+    char
+        text[100]; //string variable
+
+    //Get the string 
+    printf("Enter the phrase to convert all the upper letters: ");
+    fgets(text, 100, stdin);
+
+    //A loop to analyse each character and change the upper letters
+    for (int count = 0; count < strlen(text); count++)
+    {
+        if (text[count] >= 97 && text[count] <= 122)
+        {
+            text[count] = text[count] - 32;
+        }
+    }
+    //conclusion
+    printf("%s", text);
+}
+===========================================================
+// 7. Leia um vetor contendo letras de uma frase inclusive os espaços em branco. Retirar os
+// espaços em branco do vetor e depois escrever o vetor resultante.
+#include <stdio.h>
+#include <string.h>
+
+void
+main()
+{
+    char 
+        text[100];
+
+    int
+        position = 0;
+
+    //Get the string from the user
+    printf("Enter the text with spaces to get then out: ");
+    fgets(text, 100, stdin);
+
+    //A loop to roll every character in the string 
+    for (int count = 0; count < strlen(text); count++)
+    {
+        //Looking for a space
+        if (text[count] == ' ')
+        {
+            //Is like copying all the string after the space and writing everything from the space character
+            for (int parameter = 0; parameter < (strlen(text) - count); parameter++)
+            {
+                text[count + parameter] = text[(count + parameter) + 1];
+            }
+        }
+    }
+
+    printf("%s", text);
+}
+=============================================================================
+// 8. Faça um programa em que troque todas as ocorrências de uma letra L1 pela letra L2 em
+// uma string. A string e as letras L1 e L2 devem ser fornecidas pelo usuário.
+#include <stdio.h>
+#include <string.h>
+
+void
+main()
+{
+    char
+        text[100], 
+        letter1,
+        letter2;
+
+    //Getting the text to do the changes
+    printf("Enter a text to analyse and make the changes: ");
+    fgets(text, 100, stdin);
+
+    //Getting the letter the user want out 
+    printf("Enter the letter you want to get out: ");
+    scanf("%c", &letter1);
+
+    //Getting the letter the user want in the place
+    printf("Enter the letter you want in the place of the other one: ");
+    scanf(" %c", &letter2);
+
+    //Loop to run each character in the string and do the necessary changes
+    for (int count = 0; count < strlen(text); count++)
+    {
+        if (text[count] == letter1)
+            text[count] = letter2;
+    }
+    //Printing the result
+    printf("\n%s", text);
+}
+======================================================
+//9. Faça um programa que preencha uma cars de string com os modelos de cinco carros
+// (exemplos de modelos: Fusca, Gol, Vectra, etc.). Em seguida, preencha um vetor com o consumo
+// desses carros, isto é, quantos quilômetros cada um deles faz com um litro de combustível.
+// Calcule e mostre:
+// (a) O modelo de carro mais econômico;
+// (b) Quantos litros de combustível cada um dos carros cadastrados consome para
+// percorrer uma distância de 1.000 quilômetros.
+
+#include <stdio.h>
+
+void
+main()
+{
+    int 
+        gas[5],   //the gas array
+        economic = 0,   //The most economic car
+        parameter = 0;  //A parameter
+
+    char
+        cars[5][20];    //a matriz to order the cars
+
+    //A loop to get all cars and their gas consume
+    for (int count = 0; count < 5; count++)
+    {
+        //Clean the space to digit to avoid errors
+        fflush(stdin);
+        
+        //getting the cars names and saving in a matriz
+        printf("Enter the name of the cars: ");
+        fgets(cars[count], 20, stdin);
+
+        //Getting the cars consumes and saving in array
+        printf("Enter the cars gas consume: ");
+        scanf("%d", &gas[count]);
+    }
+
+   
+    //A for loop to get the most economic car
+    for (int count  = 0; count < 5; count++)
+    {
+        if (gas[count] > economic)
+        {
+            //Most economic
+            economic = gas[count];
+
+            //A parameter to save the position of the most economic
+            parameter = count;
+        }
+    }
+
+    //Printing the most economic
+    printf("The most efficient car is %s with %d km/l\n", cars[parameter], economic);
+
+    //Beautiful
+    printf("\n");
+
+    //A for loop to see how many liters to travel
+    for (int count = 0; count < 5; count++)
+        printf("The %s consume %dL to travel 1000 quilometers\n", cars[count], (1000 / gas[count]));
+}
+=====================================================================
+// 10. Ler o nome e o valor de uma determinada mercadoria de uma loja. Sabendo que o desconto
+// para pagamento à vista é de 10% sobre o valor total, calcular o valor a ser pago à vista. Escrever
+// o nome da mercadoria, o valor total, o valor do desconto e o valor a ser pago à vista.
+#include <stdio.h>
+#include <string.h>
+
+void
+main()
+{
+    char
+        product[20];
+    
+    float
+        price = 0,
+        discount = 0;
+    
+    printf("Enter the name of the product: ");
+    fgets(product, 20, stdin);
+
+    printf("Enter the price of the product: ");
+    scanf("%f", &price);
+
+    printf("The price of %s is R$%.1f but with 10%% of discount in cash value is: R$%.2f", product, price, price * 0.9);
+}
+================================================================
+// 11. Escreva um programa que recebe uma string S e inteiros não-negativos I e J e imprima o
+// segmento S[I..J].
+
+#include <stdio.h>
+
+void
+main()
+{
+    char 
+        text[100]; //A string to treat
+    
+    int 
+        start = 0,  //where will start
+        finish = 0; //Where will finished
+
+    //Getting the components
+    printf("Enter a string to analyse: ");
+    fgets(text, 100, stdin);
+
+    printf("Enter the position that will start writing the segment: ");
+    scanf("%d", &start);
+
+    printf("Enter the final position: ");
+    scanf("%d", &finish);
+
+    //A loop to print the segment from 'start' to 'finished'
+    while (start <= finish)
+    {
+        printf("%c", text[start]);
+        start++;
+    }
+}
+==================================================
