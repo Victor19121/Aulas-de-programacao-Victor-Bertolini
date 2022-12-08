@@ -340,3 +340,242 @@ main()
     }
 }
 ==================================================
+// 12. O código de César é uma das mais simples e conhecidas técnicas de criptografia. É um tipo
+// de substituição na qual cada letra do texto substituída por outra, que se apresenta no alfabeto
+// abaixo dela um número fixo de vezes. Por exemplo, com uma troca de três posições, ‘A’ seria
+// substituído por ‘D’, ‘B’ se tornaria ‘E’, e assim por diante. Implemente um programa que faça
+// uso desse Código de César (3 posições), entre com uma string e retorne a string codificada. 
+#include <stdio.h>
+#include <string.h>
+
+void
+main()
+{
+    char 
+        text[100] = {}; //the text in analysis
+
+    //Getting the text
+    printf("Enter a text: ");
+    fgets(text, 100, stdin);
+
+    //A loop to analyse each character
+    for (int count = 0; count < 100; count++)
+    {
+        //if the 3 last words is in the text
+        if (text[count] == 'x' || text[count] == 'y' || text[count] == 'z')
+            printf("%c", text[count] - 24); 
+
+        //Get out of the space case
+        else if (text[count] != 32)
+            printf("%c", text[count] + 3);
+        
+        //If there is a space character
+        else if(text[count] == 32)
+            printf(" ");
+    }
+}
+==================================================
+13
+===================================================
+// 14. Implemente um programa que leia duas strings, str1 e str2, e um valor inteiro positivo N.
+// Concatene não mais que N caracteres da string str2 à string str1 e termine str1 com ‘\0’.
+#include <stdio.h>
+#include <string.h>
+
+void
+main()
+{
+    char 
+        text1[100],
+        text2[100];
+    
+    int
+        num = 0;
+
+    printf("Enter the first string: ");
+    scanf("%100[^\n]", text1);
+    fflush(stdin);
+    printf("Enter the second string: ");
+    scanf("%100[^\n]", text2);
+
+    do
+    {
+        printf("Enter the number of characters that you want to concatenate: ");
+        scanf("%d", &num);  
+
+    } while (strlen(text2) < num);
+
+
+    text2[num + 1] = '\0';
+
+    printf("%s", strcat(text1, text2));
+}
+====================================================
+// 15. Faça um programa que contenha um menu com as seguintes opções:
+// (a) Ler uma string S1 (tamanho máximo 20 caracteres);
+// (b) Imprimir o tamanho da string S1;
+// (c) Comparar a string S1 com uma nova string S2 fornecida pelo usuário e imprimir o
+// resultado da comparação;
+// (d) Concatenar a string S1 com uma nova string S2 e imprimir na tela o resultado da
+// concatenação;
+// (e) Imprimir a string S1 de forma reversa;
+// (f) Contar quantas vezes um dado caractere aparece na string S1. Esse caractere desse
+// ser informado pelo usuário;
+// (g) Substituir a primeira ocorrência do caractere C1 da string S1 pelo caractere C2. Os
+// caracteres C1 e C2 serão lidos pelo usuário;
+// (h) Verificar se uma string S2 é substring de S1. A string S2 deve ser informada pelo
+// usuário;
+// (i) Retornar uma substring da string S1. Para isso o usuário deve informar a partir de qual
+// posição deve ser criada a substring e qual é o tamanho da substring.
+#include <stdio.h>
+#include <string.h>
+
+
+void
+clean_keyboard()
+{
+    fflush(stdin);
+}
+
+int
+main()
+{
+    char 
+        text1[20],
+        text2[20],
+        ask,
+        letter,
+        new_char,
+        loop,
+        bigger_loop;
+
+    int 
+        count = 0,
+        result = 0,
+        start = 0,
+        size = 0;
+
+    
+    
+    do
+    {
+
+        printf("\nPlease, choose one option: \n\n");
+        printf("(a) Ler uma string S1 (tamanho máximo 20 caracteres)\n\n");
+        printf("(b) Imprimir o tamanho da string S1\n\n");
+        printf("(c) Comparar a string S1 com uma nova string S2 fornecida pelo usuário e imprimir o resultado da comparação\n\n");
+        printf("(d) Concatenar a string S1 com uma nova string S2 e imprimir na tela o resultado da concatenação\n\n");
+        printf("(e) Imprimir a string S1 de forma reversa\n\n");
+        printf("(f) Contar quantas vezes um dado caractere aparece na string S1. Esse caractere desse ser informado pelo usuário\n\n");
+        printf("(g) Substituir a primeira ocorrência do caractere C1 da string S1 pelo caractere C2. Os caracteres C1 e C2 serão lidos pelo usuário\n\n");
+        printf("(h) Verificar se uma string S2 é substring de S1. A string S2 deve ser informada pelo usuário\n\n");
+        printf("(i) Retornar uma substring da string S1. Para isso o usuário deve informar a partir de qual posição deve ser criada a substring e qual é o tamanho da substring.\n\n");
+        
+        scanf("%c", &ask);
+
+        if (ask > 90)
+            ask = ask - 32;
+
+    } while (ask < 65 && ask > 90);
+    
+    clean_keyboard();
+    printf("Enter your string: ");
+    scanf("%20[^\n]", text1);
+
+
+    clean_keyboard();
+    switch (ask)
+    {
+        case 'A':
+            
+            printf("Enter your string: ");
+            scanf("%20[^\n]", text1);
+            break;
+
+        case 'B':
+            printf("The length of the string is: %d\n", strlen(text1));
+            break;
+
+        case 'C':
+            printf("Enter a new string to compare each one: ");
+            scanf("%20[^\n]", text1);
+
+            printf("The result of comparing both strings is %d", strcmp(text1, text2));
+            break;
+
+        case 'D':
+            printf("Enter a new string to concatenate with the first: ");
+            scanf("%20[^\n]", text2);
+
+            printf("%s", strcat(text1, text2));
+            break;
+
+        case 'E':
+            printf("The string reversed is: ");
+            for (count = strlen(text1); count > -1; count--)
+                printf("%c", text1[count]);
+            break;
+
+        case 'F':
+
+            printf("Enter the character you want to count in the string: ");
+            scanf("%c", &letter);
+
+            for (count = 0; count < 20; count++)
+            {
+                if (text1[count] == letter)
+                    result++;
+            }
+            printf("The %c appers in the string %d times", letter, result);
+            break;
+
+        case 'G':
+            
+            printf("Enter the character that you want to change: ");
+            scanf("%c", &letter);
+            clean_keyboard();
+            printf("Enter the character that you want to put in that place: ");
+            scanf("%c", &new_char);
+
+            for (count = 0; count < 20; count++)
+            {
+                if (text1[count] == letter)
+                {
+                    text1[count] = new_char;
+                }
+                    
+            }
+            printf("%s", text1);
+            break;
+
+        case 'H':
+            printf("Enter a new string to see if is substring: ");
+            scanf("%20[^\n]", text2);
+            
+            result = strstr(text1, text2);
+            if (result)
+                printf("The substring was found");
+            else
+                printf("The second string isn't a substring of the first string");
+            break;
+
+        case 'I':
+            printf("Enter the inicial position of the substring: ");
+            scanf("%d", &start);
+            clean_keyboard();
+            printf("Enter the size of the string");
+            scanf("%d", &size);
+
+        
+        for (count = start; count < (start + size); count++)
+        {
+            clean_keyboard();
+            printf("%c", text1[count]);
+        }
+        break;
+    }
+
+    return 0;
+}
+======================================================
+
