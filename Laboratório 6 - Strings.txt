@@ -375,7 +375,58 @@ main()
     }
 }
 ==================================================
-13
+// 13. Faça um programa que, dada uma string, diga se ela é um palíndromo ou não. Lembrando
+// que um palíndromo é uma palavra que tenha a propriedade de poder ser lida tanto da direita
+// para a esquerda como da esquerda para a direita.
+// Exemplo:
+// ovo
+// arara
+// Socorram-me, subi no ônibus em Marrocos
+// Anotaram a data da maratona
+
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+void
+main()
+{
+    char 
+        text[100];
+
+    int
+        len = 0,
+        key = 0,
+        count = 0;
+
+
+    printf("Enter the string: ");
+    fgets(text, 100, stdin);
+
+
+    len = strlen(text);
+    len = len - 2;
+
+    while (len > count)
+    {
+        if (text[count] != text[len])
+        {
+            key++;
+            printf("count = %c, len = %c\n", text[count], text[len]);
+        }
+        len--;
+        count++;
+    }
+
+
+    printf("%d\n", key);
+    if (key != 0)
+        printf("Its not a palindrome");
+    
+    else if (key == 0)
+        printf("Its a palindrome");
+        
+}
 ===================================================
 // 14. Implemente um programa que leia duas strings, str1 e str2, e um valor inteiro positivo N.
 // Concatene não mais que N caracteres da string str2 à string str1 e termine str1 com ‘\0’.
